@@ -1,10 +1,37 @@
-# Coding Challenges
+# API
 
-This Repository is the base for our challenges in the development application process. 
-Make sure to check out our [open positions](https://fiskaly.com/jobs)
+POST `localhost:8080/api/v0/signature-device` 
+ - Creates a new signature device, receives a json object
+```
+{
+    "id":"testing",
+    "algorithm":"ECC",
+    "label":""
+}
+```
 
-Challenges are intended for the following "skill-levels" and domains of expertise: 
-- crm-challenge-ts: Junior / Mid Fullstack developer
-- hex-editor-challenge-react-ts: Web developer all levels. Implementations are expected to vary for each skill-level
-- signing-service-challenge-go: Mid / Senior Backend developer
-- signing-service-challenge-ts: Mid / Senior Backend developer
+GET `localhost:8080/api/v0/signature-device/list` 
+ - Lists all signature devices, you can pass: id,label,algorithm as query parameter in order to filter
+ - (`?id=&label=&algorithm=`)
+
+
+GET `localhost:8080/api/v0/signature-device/{id}` 
+ - Gets a specific signature device with the id passed on the path parameter
+
+
+POST `localhost:8080/api/v0/sign-transaction` 
+ - Creates a new transaction
+```
+{
+    "device_id":"testing2",
+    "data":"65d7"
+}
+```
+
+GET `localhost:8080/api/v0/sign-transaction/list`
+  - Lists all transactions, you can pass device_id as query parameter in order to filter
+  - (`?device_id`)
+
+
+GET `localhost:8080/api/v0/sign-transaction/{id}` 
+ - Gets a specific transaction with the id passed on the path parameter
